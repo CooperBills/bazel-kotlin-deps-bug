@@ -46,4 +46,8 @@ src/main/java/com/example/KotlinExample.kt:17:10: error: unresolved reference: b
 Target //src/main/java/com/example:kotlin_example failed to build
 ```
 
-The big problem here is that `AbstractManagedChannelImplBuilder` is in `@io_grpc_grpc_java//core:internal`, which is marked private, so we can't depend directly on it.
+The big problem here is that `AbstractManagedChannelImplBuilder` is in `@io_grpc_grpc_java//core:internal`, which is marked private, so we can't depend directly on it.  Adding it gets this error:
+
+```
+ERROR: /usr/local/google/home/cbills/code/bazel-kotlin-deps/src/main/java/com/example/BUILD:22:1: in kt_jvm_binary rule //src/main/java/com/example:kotlin_example: target '@io_grpc_grpc_java//core:internal' is not visible from target '//src/main/java/com/example:kotlin_example'. Check the visibility declaration of the former target if you think the dependency is legitimate
+```
